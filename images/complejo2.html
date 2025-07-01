@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Institución Educativa Marcos Gómez Núñez</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('complejo.png.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.3);
+      min-height: 100vh;
+      padding: 30px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #ffde59;
+      text-shadow: 2px 2px 8px #000000;
+    }
+    header p {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-top: 10px;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.11);
+      padding: 30px;
+      border-radius: 12px;
+    }
+    h2 {
+      text-align: center;
+      color: #ffd94a;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    ul.grid-menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      padding: 0;
+      list-style: none;
+    }
+  ul.grid-menu li {
+  background-color: rgba(0, 0, 0, 0.3); /* más oscuro para contrastar */
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 0 10px rgba(255, 222, 89, 0.3);
+  color: #ffde59; /* amarillo para destacar sobre fondo oscuro */
+  font-size: 1.5rem;
+}
+
+    ul.grid-menu li:hover {
+  background-color: rgba(255, 222, 89, 0.9);
+  color: black;
+  text-shadow: none;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 222, 89, 0.6);
+}
+
+    .imagenes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .imagenes figure {
+      margin: 0;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .imagenes figure:hover {
+      transform: scale(1.05);
+    }
+    .imagenes img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05); /* fondo para imágenes más pequeñas */
+  padding: 5px; /* margen interno para que no se peguen */
+}
+.imagenes figure {
+  height: 290px; /* Espacio para imagen + texto */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+    .info-texto {
+      margin-top: 8px;
+      background: rgba(0, 0, 50, 0.6);
+      color: #fff;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      text-align: center;
+      display: none;
+      white-space: pre-line;
+    }
+    .info-texto.active {
+      display: block;
+    }
+    .botones-navegacion {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .botones-navegacion button {
+      background-color: #ffde59;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .botones-navegacion button:hover {
+      background-color: #ffc107;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 25px;
+      background: rgba(0, 0, 50, 0.5);
+      border-top: 2px solid #ffde59;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #ffde59;
+      text-shadow: 2px 2px 6px #000;
+      border-radius: 12px 12px 0 0;
+    }
+	.seccion {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 222, 89, 0.2);
+  margin-bottom: 30px;
+}
+
+.seccion h2 {
+  font-size: 2.3rem;
+  color: #ffde59;
+  text-align: center;
+  text-shadow: 2px 2px 8px #000;
+  border-bottom: 2px solid #ffde59;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.seccion p {
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+  border-left: 6px solid #ffde59;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 222, 89, 0.3);
+  text-align: justify;
+  margin-bottom: 25px;
+}
+#menu-principal h2 {
+  font-size: 3rem; /* Más grande */
+  font-weight: 900;
+  color: #ffde59; /* Amarillo fuerte */
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.3); /* Sombra oscura para resaltar */
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo negro translúcido */
+  padding: 15px 25px;
+  border-radius: 15px;
+  margin: 40px 0 25px 0; /* Más separación arriba y abajo */
+  text-align: center;
+  user-select: none; /* Evita selección accidental */
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <img src="logo.png.jpg" alt="Logo" />
+      <h1>Complejo Educativo Marcos Gómez Núñez</h1>
+      <p>- Ofrecemos educación desde Parvularia hasta Bachillerato</p>
+    </header>
+    <main>
+      <div id="menu-principal">
+        <h2>Niveles Educativos</h2>
+        <ul class="grid-menu">
+          <li onclick="mostrar('parvularia')">Parvularia</li>
+          <li onclick="mostrar('primer_ciclo')">Primer Ciclo</li>
+          <li onclick="mostrar('segundo_ciclo')">Segundo Ciclo</li>
+          <li onclick="mostrar('tercer_ciclo')">Tercer Ciclo</li>
+        </ul>
+        <h2 style="margin-top: 40px;">Especialidades de Bachillerato</h2>
+        <ul class="grid-menu">
+          <li onclick="mostrar('general')">Bachillerato General</li>
+          <li onclick="mostrar('salud')">Atención Primaria en Salud</li>
+          <li onclick="mostrar('contabilidad')">Administrativo Contable</li>
+          <li onclick="mostrar('reparacion')">Mantenimiento Automotriz</li>
+        </ul>
+      </div>
+      <div id="secciones"></div>
+    </main>
+  </div>
+  <script>
+  const niveles = {
+    parvularia: {
+      titulo: "Parvularia",
+      descripcion: "En Parvularia se promueve el desarrollo integral del niño y la niña mediante actividades lúdicas, fortaleciendo las habilidades motrices, sociales y cognitivas iniciales, en un ambiente seguro y estimulante que fomenta la curiosidad y el aprendizaje temprano, siguiendo el currículo nacional y orientaciones de la reforma educativa del Gobierno de El Salvador.",
+      imagenes: ["mi_parvularia.jpg"] // pon aquí tu imagen con extensión
+    },
+    primer_ciclo: {
+      titulo: "Primer Ciclo",
+      descripcion: "El Primer Ciclo abarca primero y segundo grado, donde se desarrolla la competencia lectora, matemática básica, formación en valores, y el fortalecimiento del pensamiento crítico y la comunicación, integrando actividades prácticas y proyectos que promueven la participación activa del estudiante, alineados a la reforma educativa nacional.",
+      imagenes: ["primerciclo2.jpg"]
+    },
+    segundo_ciclo: {
+      titulo: "Segundo Ciclo",
+      descripcion: "En Segundo Ciclo, que incluye tercero y cuarto grado, se consolida el aprendizaje en áreas como matemáticas, ciencias naturales, estudios sociales y lenguaje, enfatizando la expresión oral y escrita, el trabajo colaborativo y el uso de tecnologías de la información, promoviendo el desarrollo integral y preparatorio para niveles superiores según la reforma educativa.",
+      imagenes: ["segundociclo.jpg"]
+    },
+    tercer_ciclo: {
+      titulo: "Tercer Ciclo",
+      descripcion: "El Tercer Ciclo comprende quinto y sexto grado, donde se afianzan competencias científicas, sociales y comunicativas, impulsando el pensamiento lógico, la resolución de problemas, y la educación para la convivencia pacífica, incorporando también aprendizajes significativos que facilitan la transición hacia el nivel diversificado, conforme a los lineamientos de la reforma educativa salvadoreña.",
+      imagenes: ["tercerciclo.jpg"]
+    },
+    general: {
+      titulo: "Bachillerato General",
+      descripcion: "El Bachillerato General ofrece una formación académica sólida en ciencias, humanidades, y tecnologías, promoviendo el desarrollo de competencias investigativas, comunicación en idiomas extranjeros, pensamiento crítico, y habilidades socioemocionales, además de incluir talleres como robótica y emprendimiento, que preparan a los estudiantes para la educación superior o el mundo laboral según la reforma educativa vigente.",
+      imagenes: [
+        { tag: "claseingles.jpg", info: "Clase de idioma extranjero" },
+        { tag: "robotica.jpg", info: "Taller de robótica educativa" },
+        { tag: "panaderia.jpg", info: "Actividades prácticas de panadería" }
+      ]
+    },
+    salud: {
+      titulo: "Atención Primaria en Salud",
+      descripcion: "Esta especialidad prepara a los estudiantes en conocimientos y habilidades para la promoción de la salud, prevención de enfermedades, primeros auxilios y atención básica comunitaria, con énfasis en campañas de salud pública y prácticas en centros de salud, alineada a la reforma educativa para formar profesionales comprometidos con el bienestar social.",
+      imagenes: [
+        { tag: "comunidad.jpg", info: "Prácticas en salud comunitaria" },
+        { tag: "auxilios.jpg", info: "Entrenamiento en primeros auxilios" },
+        { tag: "promocion.jpg", info: "Promoción de salud en la comunidad" }
+      ]
+    },
+    contabilidad: {
+      titulo: "Administrativo Contable",
+      descripcion: "Esta especialidad forma en contabilidad financiera, auditoría, manejo de sistemas administrativos y financieros, elaboración de informes contables y gestión empresarial, preparando a los estudiantes para integrarse al sector empresarial y administrativo con competencias actualizadas conforme a la reforma educativa salvadoreña.",
+      imagenes: [
+        { tag: "practica.jpg", info: "Prácticas contables en aula" },
+        { tag: "financiero.jpg", info: "Elaboración de informes financieros" },
+        { tag: "gestion.jpg", info: "Gestión administrativa en empresas" }
+      ]
+    },
+    reparacion: {
+      titulo: "Mantenimiento Automotriz",
+      descripcion: "Esta especialidad ofrece formación técnica en diagnóstico, mantenimiento preventivo y correctivo, reparación de sistemas eléctricos y mecánicos automotrices, con prácticas en talleres equipados, preparándolos para el mercado laboral automotriz y la innovación tecnológica, conforme a los lineamientos de la reforma educativa del país.",
+      imagenes: [
+        { tag: "motores.jpg", info: "Taller práctico de motores" },
+        { tag: "vehiculo.jpg", info: "Inspección de vehículos" },
+        { tag: "reparacion.jpg", info: "Reparación de sistemas eléctricos" }
+      ]
+    }
+  };
+
+  const seccionesOrden = [
+    "parvularia", "primer_ciclo", "segundo_ciclo", "tercer_ciclo",
+    "general", "salud", "contabilidad", "reparacion"
+  ];
+
+  const seccionesDiv = document.getElementById("secciones");
+  const menuPrincipal = document.getElementById("menu-principal");
+
+  function mostrar(nombre) {
+    menuPrincipal.style.display = "none";
+    seccionesDiv.innerHTML = "";
+
+    const data = niveles[nombre];
+    if (!data) return;
+
+    const seccion = document.createElement("section");
+    seccion.classList.add("seccion", "active");
+
+    const h2 = document.createElement("h2");
+    h2.textContent = data.titulo;
+    seccion.appendChild(h2);
+
+    const p = document.createElement("p");
+    p.textContent = data.descripcion;
+    seccion.appendChild(p);
+
+    // Si hay imágenes simples (string), solo una imagen sin info
+    if (data.imagenes && typeof data.imagenes[0] === "string") {
+      const divImg = document.createElement("div");
+      divImg.classList.add("imagenes");
+      const figure = document.createElement("figure");
+      const img = document.createElement("img");
+      img.src = `images/${data.imagenes[0]}`; // ya incluye extensión
+      img.alt = data.titulo;
+      figure.appendChild(img);
+      divImg.appendChild(figure);
+      seccion.appendChild(divImg);
+    }
+
+    // Si hay imágenes con info para bachillerato
+    if (data.imagenes && typeof data.imagenes[0] === "object") {
+      const divImg = document.createElement("div");
+      divImg.classList.add("imagenes");
+      data.imagenes.forEach(({ tag, info }) => {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        img.src = `images/${tag}`; // ya incluye extensión
+        img.alt = tag;
+        figure.appendChild(img);
+
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add("info-texto");
+        infoDiv.textContent = info;
+        figure.appendChild(infoDiv);
+
+        // Mostrar info al hacer clic
+        figure.onclick = () => {
+          const allInfo = seccion.querySelectorAll(".info-texto");
+          allInfo.forEach(i => i.classList.remove("active"));
+          infoDiv.classList.add("active");
+        };
+
+        divImg.appendChild(figure);
+      });
+      seccion.appendChild(divImg);
+    }
+
+    // Botones Navegación
+    const navDiv = document.createElement("div");
+    navDiv.classList.add("botones-navegacion");
+
+    const indiceActual = seccionesOrden.indexOf(nombre);
+
+    if (indiceActual !== -1 && indiceActual < seccionesOrden.length - 1) {
+      const btnSiguiente = document.createElement("button");
+      btnSiguiente.textContent = "Siguiente";
+      btnSiguiente.onclick = () => mostrar(seccionesOrden[indiceActual + 1]);
+      navDiv.appendChild(btnSiguiente);
+    }
+
+    const btnInicio = document.createElement("button");
+    btnInicio.textContent = "Página Principal";
+    btnInicio.onclick = () => {
+      seccionesDiv.innerHTML = "";
+      menuPrincipal.style.display = "block";
+    };
+    navDiv.appendChild(btnInicio);
+
+    seccion.appendChild(navDiv);
+
+    // Mensaje final
+    const footer = document.createElement("footer");
+    footer.textContent = "Somos la mejor opción educativa.";
+    seccion.appendChild(footer);
+
+    seccionesDiv.appendChild(seccion);
+  }
+</script>
+
+</body>
+</html>
